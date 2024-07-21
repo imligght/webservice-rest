@@ -1,26 +1,26 @@
-import useState from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 
 // Componente que realiza a soma de dois números
 const SumComponent = () => {
-  // Estados para armazenar os números digitados pelo usuário
   const [num1, setNum1] = useState('');
   const [num2, setNum2] = useState('');
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
 
   const handleSum = async () => {
-    try {
-      const response = await axios.get(`http://0.0.0.0:8000/soma?num1=${num1}&num2=${num2}`);
+    const response = await axios.get(`http://0.0.0.0:8000/soma?num1=${num1}&num2=${num2}`);
 
-      setResult(response.data.soma);
-      setError(null);
-      console.log(response);
-    } catch (err) {
-      setError(err.response.data.error);
+    if (response.data.error !== undefined) {
+      setError(response.data.error);
       setResult(null);
     }
-  };
+
+    if (response.data.soma !== undefined) {
+      setResult(response.data.soma); 
+      setError(null);
+    }
+};
 
   return (
     <div>
