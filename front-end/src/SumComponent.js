@@ -10,7 +10,7 @@ const SumComponent = () => {
 
   // Função que pega os valores retornados pelo back-end e atualiza o estado
   const handleSum = async () => {
-    const response = await axios.get(`http://0.0.0.0:8000/soma?num1=${num1}&num2=${num2}`);
+    const response = await axios.get(`http://localhost:8000/soma?num1=${num1}&num2=${num2}`);
 
     // Condição para verificar se a resposta do back-end contém um erro
     if (response.data.error !== undefined) {
