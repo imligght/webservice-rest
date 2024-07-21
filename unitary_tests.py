@@ -50,4 +50,4 @@ class TestWebService(unittest.TestCase):
         print("Test Status: ok\n")
 
 if __name__ == "__main__":
-    unittest.main(verbosity=2)
+    unittest.main()
