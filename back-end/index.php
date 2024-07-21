@@ -26,13 +26,21 @@ $f3->route('GET /soma', function($f3) {
     $num2 = $f3->get('GET.num2');
 
     // Checa se os parâmetros são de fato números
+    if (!is_numeric($num1) || !is_numeric($num2)) {
+        echo json_encode(['error' => 'Parametros invalidos']);
+        return;
+    }
+
+    // Converte os parâmetros para float e faz a soma
     try {
-        $num1 = floatval($num1);
-        $num2 = floatval($num2);
+        $num1 = (float)$num1;
+        $num2 = (float)$num2;
+
         $soma = $num1 + $num2;
 
         echo json_encode(['soma' => $soma]);
 
+    // Caso ocorra algum erro, retorna uma mensagem de erro
     } catch (Exception $e) {
         echo json_encode(['error' => 'Parâmetros inválidos']);
     }
