@@ -16,7 +16,7 @@ require('vendor/autoload.php');
 $f3 = Base::instance();
 
 $f3->route('GET /', function($f3) {
-    echo 'Hello, world!';
+    echo nl2br("Hello, world!\n\nDica: Tente acessar a rota /soma?num1=1&num2=2");
 });
 
 // Define a rota para o método endpoint '/soma'
